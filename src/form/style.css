@@ -1,0 +1,10 @@
+.center {
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+button {
+  background-color: rgb(3, 70, 70);
+  color: white;
+}

@@ -1,17 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { formValueSelector } from "redux-form";
+import store from "./store";
+import showResults from "./form/showResults";
+import SimpleForm from "./form/simpleForm";
+const rootEl = document.getElementById("root");
+const Values = formValueSelector("simpleForm");
+ReactDOM.render(
+  <Provider store={store}>
+    <div style={{ padding: 15 }}>
+      <h1>Login form</h1>
+      <SimpleForm onSubmit={showResults} />
+      <Values form="simpleForm" />
+    </div>
+  </Provider>,
+  rootEl
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
